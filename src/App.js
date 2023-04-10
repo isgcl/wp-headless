@@ -1,25 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import MainPage from './components/main';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom"; // kalıcı bağlantılı gezinme sağlayan eklenti
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainPage page={'news'} />,
+    errorElement: <MainPage page={'error'} />
+  },
+  {
+    path: "/:slug",
+    element: <MainPage page={'news-detail'} />,
+    errorElement: <MainPage page={'error'} />
+  }
+]);
+
+const App = ()=> {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <RouterProvider router={router} />
+  )
 }
 
 export default App;
