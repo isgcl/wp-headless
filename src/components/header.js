@@ -10,8 +10,8 @@ const Header = ()=> {
   return (
     <header className={scrollTop > 50 ? 'fixme': ''}>
       <div className='pg'>
-        <h1 className='logo'><GoHomeLink cssclass='go-back' message='WordPress Headless React CMS' /></h1>
-        <button className={isHamburgerActive ? 'active' : ''} type='button' onClick={()=> setHamburgerActive(!isHamburgerActive)}>Menu</button>
+        <h1 className='logo'><a href='https://sipa.web.tr' target='_blank' rel='noopener noreferrer'><i className='heady icon-sipa' title="SIPA Agency | sipa.web.tr"></i></a> <GoHomeLink cssclass='go-back' message='<em>WordPress</em> <em>Headless React CMS</em>' /></h1>
+        <button className={isHamburgerActive ? 'hamburger active' : 'hamburger'} type='button' onClick={()=> setHamburgerActive(!isHamburgerActive)}><i className='heady icon-menu'></i></button>
       </div>
     </header>
   )

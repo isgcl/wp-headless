@@ -53,9 +53,11 @@ const NewsPageContent = ()=> {
           hasMore={hasMore}
           loader={<Processing />}
           className="grid-article grid-news"
-          endMessage={ <EndOfData tag={'article'} cssclass={'iste-benim-hatam'} message={'Hepsi bu gadder'} /> }
+          endMessage={ <EndOfData tag={'article'} cssclass={'iste-benim-hatam'} message={'There is no more content.'} /> }
         >
-         { news.map((item,ind)=> <NewsSingle key={item.id} ind={ind/currentPageNo} id={item.id} title={item.title.rendered} slug={item.slug} excerpt={item.excerpt.rendered} excerpt_title={item.excerpt_title} fimg_url={item.fimg_url} /> ) }
+         {
+         news.map((item,ind)=> <NewsSingle key={item.id} ind={ind/currentPageNo} id={item.id} title={item.title.rendered} slug={item.slug} excerpt={item.excerpt.rendered} excerpt_title={item.excerpt_title} fimg_url={item.fimg_url} /> )
+         }
         </InfiniteScroll>
         
         {

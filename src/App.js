@@ -1,4 +1,5 @@
 import './App.css';
+// import './fonts/heady/heady.css';
 
 import MainPage from './components/main';
 import {
@@ -9,13 +10,23 @@ import {
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/news",
     element: <MainPage page={'news'} />,
+    errorElement: <MainPage page={'error'} />
+  },
+  {
+    path: "/",
+    element: <MainPage page={'home'} />,
     errorElement: <MainPage page={'error'} />
   },
   {
     path: "/:slug",
     element: <MainPage page={'news-detail'} />,
+    errorElement: <MainPage page={'error'} />
+  },
+  {
+    path: "/page/:slug",
+    element: <MainPage page={'page-detail'} />,
     errorElement: <MainPage page={'error'} />
   }
 ]);

@@ -3,6 +3,7 @@ import Sidebar from './sidebar'
 import Header from './header'
 import Footer from './footer'
 import Content from './content'
+import NewsPopup from './pages/news-popup'
 import { Helmet } from 'react-helmet'
 import { WPThemeProvider } from '../context/WPContext'
 
@@ -13,7 +14,7 @@ class MainPage extends Component {
     return (
       <>
       <Helmet>
-        <title>Welcome, this is first ReactApp</title>
+        <title>WordPress Headless React CMS</title>
         <meta name="description" content="This is the first WordPress headless React App" />
       </Helmet>
       <main className='main-site'>
@@ -22,6 +23,7 @@ class MainPage extends Component {
           <Content page={page} />
           <Sidebar />
           <Footer />
+          <NewsPopup />
         </WPThemeProvider>
       </main>
 
