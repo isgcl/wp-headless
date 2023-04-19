@@ -68,9 +68,9 @@ const NewsDetail = ()=> {
             { // news detail text parser
               parseHtml(newsDetail.content.rendered)
             }
-            
+
             {
-              isCommentsOpen && <Comments id={newsDetail.id} />
+              isCommentsOpen && <Comments id={newsDetail.id} count={newsDetail.comment_count} />
             }
 
             <ShareMe isSharePopupActive={isSharePopupActive} setSharePopupActive={setSharePopupActive} title={parseHtml(newsDetail.title.rendered)} url={window.location.href} />
