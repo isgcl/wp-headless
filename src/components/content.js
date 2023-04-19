@@ -5,7 +5,6 @@ import NewsDetailPageContent from './pages/news-detail'
 import PageDetail from './pages/page-detail'
 import Homepage from './pages/home'
 
-
 class Content extends Component {
   render() {
     const {page} = this.props
@@ -14,7 +13,7 @@ class Content extends Component {
             { page === "home" && <Homepage /> } 
             { page === "page-detail" && <PageDetail /> } 
             { page === "news" && <NewsPageContent /> } 
-            { page === "news-detail" && <NewsDetailPageContent /> } 
+            { page === "news-detail" &&  <NewsDetailPageContent /> } 
             { page === "error" && <ErrorPage /> } 
         </div>
     )

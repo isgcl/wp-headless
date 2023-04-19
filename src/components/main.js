@@ -4,6 +4,7 @@ import Header from './header'
 import Footer from './footer'
 import Content from './content'
 import NewsPopup from './pages/news-popup'
+import Notifies from './tool/notifies'
 import { Helmet } from 'react-helmet'
 import { WPThemeProvider } from '../context/WPContext'
 
@@ -25,6 +26,7 @@ class MainPage extends Component {
         <Sidebar />
         <Footer />
         <NewsPopup />
+        <Notifies />
       </WPThemeProvider>
       
       {/* Main Structure End */}

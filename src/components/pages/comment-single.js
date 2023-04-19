@@ -7,17 +7,17 @@ import CommentReplyForm from '../formik/formik-comment-reply'
 const CommentSingle = ({comments,className,id,date,author,comment,avatar_uri,postid})=> {
 
   const [showReplyForm,setShowReplyForm] = useState(false)
-  const [subCommentID,setSubCommentID] = useState(null)
+  const [subCommentsID,setSubCommentsID] = useState([])
+  
 
   useEffect(()=>{
-    // console.log('useEffect run count?')
+    console.log('useEffect run count?')
     const checkSubComments = (id,comments)=> {
-        return comments.map((comment)=> comment.parent === id && setSubCommentID(comment.id) )
+        return comments.map((comment)=> comment.parent === id && setSubCommentsID((prev)=>[...prev,comment.id]) )
       }
-    
     checkSubComments(id,comments)
-    //console.log('subCommentID',subCommentID)
-  },[id,comments,subCommentID])
+    // eslint-disable-next-line
+  },[id])
   
 
   
@@ -46,9 +46,8 @@ const CommentSingle = ({comments,className,id,date,author,comment,avatar_uri,pos
             }
 
             { 
-            subCommentID !== null && 
-            
-            comments.map((comment)=> comment.id === subCommentID &&
+            subCommentsID !== null &&
+            comments.map((comment)=> subCommentsID.includes(comment.id)  &&
             <CommentSingle className='sub-comment' key={comment.id} id={comment.id} postid={postid} date={moment(comment.date).format('DD MMMM, YYYY')} author={comment.author_name} comment={parseHtml(comment.content.rendered)} avatar_uri={comment.author_avatar_urls[96]} comments={comments} />)
 
             }

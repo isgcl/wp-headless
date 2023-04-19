@@ -119,30 +119,6 @@ textarea {
   resize: vertical;
 }
 
-button[type="submit"] {
-  padding: 10px 20px;
-  background-color: var(--fusya);
-  color: var(--white);
-  border: 1px solid var(--fusya);
-  cursor: pointer;
-  font-weight: bold;
-}
-button[type="submit"]:hover {
-  background-color: var(--white);
-  color: var(--fusya);
-}
-body.dark-mode button[type="submit"] {
-  background-color: var(--black);
-  color: var(--white);
-  border: 1px solid var(--black);
-  cursor: pointer;
-  font-weight: bold;
-}
-body.dark-mode button[type="submit"]:hover {
-  background-color: var(--fusya);
-  color: var(--white);
-}
-
 body {
   background-color: #ffffff;
   padding: 100px 0 0;
@@ -570,6 +546,41 @@ button.go-reply.cancel:hover {
 }
 body.dark-mode button.go-reply.cancel:hover {
   color: var(--white);
+}
+
+
+button[type="submit"],
+button.go-write-comment {
+  padding: 10px 20px;
+  background-color: var(--fusya);
+  color: var(--white);
+  border: 1px solid var(--fusya);
+  cursor: pointer;
+  font-weight: bold;
+}
+button[type="submit"]:hover,
+button.go-write-comment:hover {
+  background-color: var(--white);
+  color: var(--fusya);
+}
+body.dark-mode button[type="submit"],
+body.dark-mode button.go-write-comment {
+  background-color: var(--black);
+  color: var(--white);
+  border: 1px solid var(--black);
+  cursor: pointer;
+  font-weight: bold;
+}
+body.dark-mode button[type="submit"]:hover,
+body.dark-mode button.go-write-comment:hover {
+  background-color: var(--fusya);
+  color: var(--white);
+}
+
+button.go-write-comment {
+  position: absolute;
+  z-index: 1;
+  inset: auto 40px auto auto;
 }
 
 .post-header {
@@ -1239,6 +1250,56 @@ body.dark-mode .user-menu {
   vertical-align: middle;
 }
 
+.notifies {
+  position: fixed;
+  z-index: 55;
+  inset: auto auto 20px 20px;
+  max-width: 320px;
+}
+.notifies > * + * {
+  margin-top: 36px;
+}
+.notify {
+  border-radius: 6px;
+  padding: 20px 20px 20px 64px;
+  background-color: var(--dark);
+  color: var(--white2);
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 16px rgba(0,0,0,.15);
+  min-height: 80px;
+}
+body.dark-mode .notify:not(.red,.green) {
+  background-color: var(--white3);
+  color: var(--black2);
+}
+.notify.red {
+  background-color: var(--red);
+}
+.notify.green {
+  background-color: var(--green);
+}
+.notify + .notify {
+  margin-top: 20px;
+  animation: frombottom_mini .3s normal linear;
+}
+.notify:after {
+  content: "\E808";
+  font-family: 'heady';
+  position: absolute;
+  z-index: 1;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: .8rem;
+}
+.notify i.heady {
+  font-size: 2rem;
+  position: absolute;
+  z-index: 1;
+  inset: 20px auto auto 20px;
+}
+
 /* _last for all screen */
 
 .t300,
@@ -1527,6 +1588,16 @@ aside:after,
   }
   .go-user-menu > span {
     display: none;
+  }
+  .notifies {
+    inset: auto 20px 20px 20px;
+    max-width: unset;
+  }
+  .notify + .notify {
+    margin-top: 5px;
+  }
+  button.go-write-comment {
+    inset: auto 0 auto auto;
   }
 
   @keyframes fromleft {

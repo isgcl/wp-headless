@@ -27,46 +27,98 @@ export const WPThemeProvider = ({children})=> {
   const [isLoginBoxShow,setIsLoginBoxShow] = useState(false)
 
   
+  const [notifies,setNotifies] = useState([
+    /* {
+      'id':0,
+      'notify':'Bu bir örnek bildirim.',
+      'status':1,
+      'type' : 'permanent' || 'temporary' ,
+      'cssclass':'green' 
+    },
+    {
+      'id':1,
+      'notify':'Bu bir örnek bildirim. Ama daha uzun bir bildirim hacılarrrrrrr.....',
+      'status':1,
+      'type' : 'permanent' || 'temporary',
+      'cssclass':'red' 
+    },
+    {
+      'id':2,
+      'notify':'Bu bir örnek bildirim. Ama daha uzun bir bildirim hacılarrrrrrr.....',
+      'status':1,
+      'type' : 'permanent' || 'temporary',
+      'cssclass':'' 
+    }   */ 
+  ])
+
+  const createNotify = ({message,type,cssclass})=>{
+    let newNotify = {
+      'id': Math.floor(Math.random()*777373469482199*Math.random()),
+      'notify':message,
+      'status':1,
+      'type':type,
+      'cssclass':cssclass
+    }
+    setNotifies((prev)=> [...prev,newNotify])
+    //console.log('notify message.length',message.length,message)
+    /* if want to auto hide notify */
+    if (type === 'temporary') {
+      setTimeout(()=>{closeNotify(newNotify.id)},message.length*300)
+    }
+  }
+
+  const closeNotify = (id)=>{
+      const newState = notifies.map(obj => {
+          // 👇️ if id equals 2, update country property
+          if (obj.id === id) {
+            return {...obj, status: 0};
+          }
+          // 👇️ otherwise return the object as is
+          return obj;
+        })
+    
+        setNotifies(newState);
+  }
+  
   useEffect(() => {
 
-  const checkMobile = ()=> {
-    if (window.innerWidth < mobileRefDimension) {
-        // console.log('mobildeyiz',window.innerWidth,mobileRefDimension)
-      setIsMobile(true)
-    } else {
-       //console.log('masaüstündeyiz',window.innerWidth,mobileRefDimension)
-      setIsMobile(false)
+    const checkMobile = ()=> {
+      if (window.innerWidth < mobileRefDimension) {
+          // console.log('mobildeyiz',window.innerWidth,mobileRefDimension)
+        setIsMobile(true)
+      } else {
+        //console.log('masaüstündeyiz',window.innerWidth,mobileRefDimension)
+        setIsMobile(false)
+      }
     }
-  }
 
-  const checkLocalDarkMode = ()=> {
-    let localDarkModeStatus = localStorage.getItem('darkmode');
-    if (localDarkModeStatus !== null) setDarkmode(true)
-  }
-
-  checkMobile() // check small screen devices
-  checkLocalDarkMode() // check local dark mode settings
-  
-  window.addEventListener('resize', checkMobile)
-
-  /* user remember */
-
-  let localUserSavedToken = localStorage.getItem('token')
-
-  if (localUserSavedToken) {
-      axios.defaults.headers.common["Authorization"] = `Bearer ${localUserSavedToken}`;
-      setLogedUserData({
-        'token':localStorage.getItem('token'),
-        'user_email': localStorage.getItem('user_email'),
-        'user_nicename' : localStorage.getItem('user_nicename'),
-        'user_display_name' : localStorage.getItem('user_display_name')
-      })
-      setUserLogedIn(true)
+    const checkLocalDarkMode = ()=> {
+      let localDarkModeStatus = localStorage.getItem('darkmode');
+      if (localDarkModeStatus !== null) setDarkmode(true)
     }
-    // eslint-disable-next-line
+
+    checkMobile() // check small screen devices
+    checkLocalDarkMode() // check local dark mode settings
+    
+    window.addEventListener('resize', checkMobile)
+
+    /* user remember */
+
+    let localUserSavedToken = localStorage.getItem('token')
+
+    if (localUserSavedToken) {
+        axios.defaults.headers.common["Authorization"] = `Bearer ${localUserSavedToken}`;
+        setLogedUserData({
+          'token':localStorage.getItem('token'),
+          'user_email': localStorage.getItem('user_email'),
+          'user_nicename' : localStorage.getItem('user_nicename'),
+          'user_display_name' : localStorage.getItem('user_display_name')
+        })
+        setUserLogedIn(true)
+      }
+      // eslint-disable-next-line
   }, [])
   
-
   useEffect(()=>{
     isHamburgerActive || isSharePopupActive ? document.body.classList.add('freeze') : document.body.classList.remove('freeze')
     if (isHamburgerActive || isSharePopupActive) setUserMenuVisible(false) 
@@ -109,7 +161,11 @@ export const WPThemeProvider = ({children})=> {
     isStartPointHome,
     setIsStartPointHome,
     isLoginBoxShow,
-    setIsLoginBoxShow
+    setIsLoginBoxShow,
+    notifies,
+    setNotifies,
+    createNotify,
+    closeNotify
   }
 
 
