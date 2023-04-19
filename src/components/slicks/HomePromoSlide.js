@@ -12,6 +12,7 @@ const HomePromoSlide = ({category})=> {
     let slickSettings = {
         dots: true,
         infinite: false,
+        autoplay:true,
         speed: 700,
         slidesToShow: 1,
         slidesToScroll: 1

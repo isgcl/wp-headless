@@ -6,6 +6,7 @@ let fetchUri = process.env.REACT_APP_WP_HEADLESS_URI+'posts/?slug='
 
 const NewsPopupFetch = ({slug,setPopupCall}) => {
 
+
     const {
         setNewsPopupOpen,
         setNewsPopupData

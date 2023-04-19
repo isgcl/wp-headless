@@ -17,15 +17,17 @@ class MainPage extends Component {
         <title>WordPress Headless React CMS</title>
         <meta name="description" content="This is the first WordPress headless React App" />
       </Helmet>
-      <main className='main-site'>
-        <WPThemeProvider>
-          <Header />
-          <Content page={page} />
-          <Sidebar />
-          <Footer />
-          <NewsPopup />
-        </WPThemeProvider>
-      </main>
+      {/* Main Structure Start */}
+
+      <WPThemeProvider>
+        <Header />
+        <Content page={page} />
+        <Sidebar />
+        <Footer />
+        <NewsPopup />
+      </WPThemeProvider>
+      
+      {/* Main Structure End */}
 
       </>
     )

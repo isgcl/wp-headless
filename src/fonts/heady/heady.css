@@ -52,7 +52,6 @@
     /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
   }
   
-
 .icon-star:before { content: '\e800'; } /* '' */
 .icon-star-empty:before { content: '\e801'; } /* '' */
 .icon-heart-empty:before { content: '\e802'; } /* '' */
@@ -127,6 +126,16 @@
 .icon-docs:before { content: '\e847'; } /* '' */
 .icon-bell-1:before { content: '\e848'; } /* '' */
 .icon-sipa:before { content: '\e849'; } /* '' */
+.icon-user:before { content: '\e84a'; } /* '' */
+.icon-user-2:before { content: '\e84b'; } /* '' */
+.icon-user-3:before { content: '\e84c'; } /* '' */
+.icon-user-cry:before { content: '\e84d'; } /* '' */
+.icon-user-blink:before { content: '\e84e'; } /* '' */
+.icon-user-suprise:before { content: '\e84f'; } /* '' */
+.icon-user-tongue:before { content: '\e850'; } /* '' */
+.icon-user-happy:before { content: '\e851'; } /* '' */
+.icon-user-maskot:before { content: '\e852'; } /* '' */
+.icon-user-maskot-2:before { content: '\e853'; } /* '' */
 .icon-trash:before { content: '\f083'; } /* '' */
 .icon-link-ext:before { content: '\f08e'; } /* '' */
 .icon-twitter:before { content: '\f099'; } /* '' */

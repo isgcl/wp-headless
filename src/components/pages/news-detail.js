@@ -16,6 +16,7 @@ let fetchUri = process.env.REACT_APP_WP_HEADLESS_URI+'posts/?slug='
 
 const NewsDetail = ()=> {
 
+
   const {isSharePopupActive,setSharePopupActive,setNewsPopupOpen,isStartPointHome} = useContext(WPContext)
 
   const [isLoading,setLoading] = useState(true)
@@ -24,7 +25,7 @@ const NewsDetail = ()=> {
   
 
   let {slug} = useParams()
-  
+
   
   useEffect(()=>{
     setNewsPopupOpen(false)
@@ -35,6 +36,7 @@ const NewsDetail = ()=> {
     })
     // eslint-disable-next-line
   },[slug])
+  
   
   return (
     
@@ -63,12 +65,11 @@ const NewsDetail = ()=> {
             
             <picture className='post-image'><img src={newsDetail.fimg_url} alt={newsDetail.title.rendered} /></picture> 
             <p className='post-date in-grid'> <i className='heady icon-calendar'></i> <time>{moment(newsDetail.date).format('DD MMMM, YYYY')}</time></p>
-            <p className='post-comments'><button title='Open comments' type='button' onClick={()=> setIsCommentsOpen(true)}> Comments ({newsDetail.comment_count}) </button></p>
+            <p className='post-comments'><button title='Open comments' type='button' onClick={()=> setIsCommentsOpen(true)}><i className='heady icon-comment-empty'></i> Comments ({newsDetail.comment_count}) </button></p>
 
             { // news detail text parser
               parseHtml(newsDetail.content.rendered)
             }
-
             {
               isCommentsOpen && <Comments id={newsDetail.id} count={newsDetail.comment_count} />
             }

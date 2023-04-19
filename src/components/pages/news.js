@@ -40,11 +40,6 @@ const NewsPageContent = ()=> {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
-  /*
-  useEffect(()=>{
-    if (news) localStorage.setItem('_news',JSON.stringify(news))
-  },[news])
-  */
   return (
     <section id='news'>
         <InfiniteScroll
@@ -52,11 +47,12 @@ const NewsPageContent = ()=> {
           next={getNewsPosts}
           hasMore={hasMore}
           loader={<Processing />}
+          pullDownToRefreshThreshold={50}
           className="grid-article grid-news"
-          endMessage={ <EndOfData tag={'article'} cssclass={'iste-benim-hatam'} message={'There is no more content.'} /> }
+          endMessage={ <EndOfData tag={'article'} cssclass={'there-is-no-more'} message={'There is no more content.'} /> }
         >
          {
-         news.map((item,ind)=> <NewsSingle key={item.id} ind={ind/currentPageNo} id={item.id} title={item.title.rendered} slug={item.slug} excerpt={item.excerpt.rendered} excerpt_title={item.excerpt_title} fimg_url={item.fimg_url} /> )
+         news.map((item,ind)=> <NewsSingle key={item.id} ind={ind/currentPageNo} id={item.id} title={item.title.rendered} slug={item.slug} excerpt={item.excerpt.rendered} excerpt_title={item.excerpt_title} fimg_url={item.fimg_url} comment_count={item.comment_count} date={item.date} /> )
          }
         </InfiniteScroll>
         
