@@ -78,6 +78,12 @@ const UserLoginForm = () => {
 
       const {handleSubmit,handleChange,handleBlur} = formik
 
+      const autoLoginTestUser = ()=>{
+        formik.values.username = 'sipatestuser'
+        formik.values.password = 'sipassword'
+        formik.submitForm()
+      }
+
       return (
         <>
         {
@@ -120,7 +126,7 @@ const UserLoginForm = () => {
           </div>  
           
           <p className='t_right'><button type="submit" className='go-login'>Log in</button></p>
-          
+          <p><button type='button' className='go-test-user-login' onClick={()=>autoLoginTestUser()}><i className='heady icon-child'></i> Auto login for Test user.</button></p>
             {/*JSON.stringify(formik.values)*/}
         
         </form>

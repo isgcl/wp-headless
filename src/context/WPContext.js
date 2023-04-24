@@ -27,29 +27,7 @@ export const WPThemeProvider = ({children})=> {
   const [isLoginBoxShow,setIsLoginBoxShow] = useState(false)
 
   
-  const [notifies,setNotifies] = useState([
-    /* {
-      'id':0,
-      'notify':'Bu bir örnek bildirim.',
-      'status':1,
-      'type' : 'permanent' || 'temporary' ,
-      'cssclass':'green' 
-    },
-    {
-      'id':1,
-      'notify':'Bu bir örnek bildirim. Ama daha uzun bir bildirim hacılarrrrrrr.....',
-      'status':1,
-      'type' : 'permanent' || 'temporary',
-      'cssclass':'red' 
-    },
-    {
-      'id':2,
-      'notify':'Bu bir örnek bildirim. Ama daha uzun bir bildirim hacılarrrrrrr.....',
-      'status':1,
-      'type' : 'permanent' || 'temporary',
-      'cssclass':'' 
-    }   */ 
-  ])
+  const [notifies,setNotifies] = useState([])
 
   const createNotify = ({message,type,cssclass})=>{
     let newNotify = {

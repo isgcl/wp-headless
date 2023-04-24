@@ -9,7 +9,7 @@ import Processing from '../processing'
 const CommentReplyForm = ({replyid,setShowReplyForm,postid}) => {
 
     
-    const {isUserLogedIn,setIsLoginBoxShow,logedUserData,logedUserExtentedData,createNotify} = useContext(WPContext)
+    const {isUserLogedIn,setIsLoginBoxShow,logedUserData,logedUserExtentedData,createNotify,setNewsPopupOpen} = useContext(WPContext)
     const [isProcessing,setIsProcessing] = useState()
 
     const { user_email,
@@ -44,7 +44,7 @@ const CommentReplyForm = ({replyid,setShowReplyForm,postid}) => {
           axios.post(fetchUri,commentData)
           .then(res => {
               //setComments( (prev)=> [...prev,res.data] )
-              createNotify({message:'Your comment has been sent succesfully.',type:'temporary',cssclass:'green'})
+              createNotify({message:'Your comment has been sent succesfully. It will be publish when it aproved',type:'temporary',cssclass:'green'})
               // console.log('Res data',res.data)
           }).catch(err => {
               //console.log('errol',err)
@@ -61,6 +61,11 @@ const CommentReplyForm = ({replyid,setShowReplyForm,postid}) => {
         },
         validationSchema: replyValidations // yup componenti ile hata algoritması için şema oluşturuyoruz
       });
+
+    const replyOnLogedOut = ()=> {
+      setNewsPopupOpen(false)
+      setIsLoginBoxShow(true)
+    }
 
       return (
         <> {
@@ -138,7 +143,7 @@ const CommentReplyForm = ({replyid,setShowReplyForm,postid}) => {
           :
           <div className='login-needed'>
             <p>Please login for write a comment.</p>
-            <p><button type='button' className='go-login-popup' onClick={()=>setIsLoginBoxShow(true)}>Log In</button></p>
+            <p><button type='button' className='go-login-popup' onClick={()=>replyOnLogedOut()}>Log In</button></p>
           </div>
         } 
         

@@ -94,7 +94,7 @@ const Comments = ({id,count,inpopup})=> {
                     <p><button type='button' className='go-more-comments' onClick={()=>getComments()}><i className='heady icon-arrows-cw'></i> Load More Comment</button></p>
                 }
                 {
-                  count > 10 && isFinished && <EndOfData message={'No more comments.'} tag={'p'} />  
+                  count > 10 && isFinished && <EndOfData message={'No more comments.'} tag={'p'} cssclass={'no-comment'} />  
                 }
             </div>
         }

@@ -11,7 +11,7 @@ const CommentSingle = ({comments,className,id,date,author,comment,avatar_uri,pos
   
 
   useEffect(()=>{
-    console.log('useEffect run count?')
+    // console.log('useEffect run count?')
     const checkSubComments = (id,comments)=> {
         return comments.map((comment)=> comment.parent === id && setSubCommentsID((prev)=>[...prev,comment.id]) )
       }

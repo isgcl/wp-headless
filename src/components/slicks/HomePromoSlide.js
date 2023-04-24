@@ -21,7 +21,7 @@ const HomePromoSlide = ({category})=> {
     let fetchUri = process.env.REACT_APP_WP_HEADLESS_URI+'sipaslides/?category_slug='
     
     useEffect(()=>{
-        console.log('fetchUri',fetchUri+category)
+        // console.log('fetchUri',fetchUri+category)
         if (category) axios(fetchUri+category)
         .then(res => {
             // console.log('Slide',res.data)

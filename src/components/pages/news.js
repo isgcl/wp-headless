@@ -23,7 +23,7 @@ const NewsPageContent = ()=> {
         setNews((prevdata)=>[...prevdata,...res.data])
         //setLoading(false)
         setCurrentPageNo((prev)=>prev+1)
-        console.log('CurrentPageNo',currentPageNo)
+        // console.log('CurrentPageNo',currentPageNo)
     }).catch(error => {
       console.error(error)
       if (error.code === 'ERR_BAD_REQUEST') {
@@ -46,8 +46,7 @@ const NewsPageContent = ()=> {
           dataLength={news.length}
           next={getNewsPosts}
           hasMore={hasMore}
-          loader={<Processing />}
-          pullDownToRefreshThreshold={50}
+          loader={<Processing message={'Loading contents...'} />}
           className="grid-article grid-news"
           endMessage={ <EndOfData tag={'article'} cssclass={'there-is-no-more'} message={'There is no more content.'} /> }
         >

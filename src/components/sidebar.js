@@ -44,7 +44,10 @@ const Sidebar = () => {
                 <NavLink onClick={()=>setSomeDisable()} to="/page/about">About</NavLink>
             </li>
             <li>
-                <NavLink onClick={()=>setSomeDisable()} to="/news">News</NavLink>
+                <NavLink onClick={()=>setSomeDisable()} to="/news">News Stream</NavLink>
+            </li>
+            <li>
+                <NavLink onClick={()=>setSomeDisable()} to="/categories">Categories</NavLink>
             </li>
         </ul>
     </nav>
