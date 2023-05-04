@@ -16,6 +16,16 @@ const userLoginValidations = yup.object({
     username: yup.string().required('Required'),
     password: yup.string().required('Required'),
 })
+
+const userRegisterValidations = yup.object({ 
+    username: yup.string().required('Required').min(3, 'Min 3 character').max(50, 'Max 50 character'),
+    email: yup.string().email('Invalid email').required('Required'),
+    password: yup.string().required('Required').min(8, 'Min 8 character').max(50, 'Max 50 character'),
+    password2: yup.string()
+     .oneOf([yup.ref('password'), null], 'Passwords does not match').min(8, 'Min 8 character').max(50, 'Max 50 character'),
+    recaptcha: yup.string().required('Required')
+})
+
 const userForgotPasswordValidations = yup.object({ 
     username: yup.string().required('Required'),
 })
@@ -23,6 +33,7 @@ const userForgotPasswordValidations = yup.object({
 export {
         replyValidations,
         userLoginValidations,
-        userForgotPasswordValidations
+        userForgotPasswordValidations,
+        userRegisterValidations
       }
 export default validations

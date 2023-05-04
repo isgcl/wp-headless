@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react"
-import 'moment/locale/tr'
+// import 'moment/locale/tr'
 import axios from "axios"
 
 const WPContext = createContext()
@@ -25,7 +25,6 @@ export const WPThemeProvider = ({children})=> {
   const [darkmode, setDarkmode] = useState(false)
   const [isStartPointHome,setIsStartPointHome] = useState(false)
   const [isLoginBoxShow,setIsLoginBoxShow] = useState(false)
-
   
   const [notifies,setNotifies] = useState([])
 
@@ -47,11 +46,9 @@ export const WPThemeProvider = ({children})=> {
 
   const closeNotify = (id)=>{
       const newState = notifies.map(obj => {
-          // 👇️ if id equals 2, update country property
           if (obj.id === id) {
             return {...obj, status: 0};
           }
-          // 👇️ otherwise return the object as is
           return obj;
         })
     

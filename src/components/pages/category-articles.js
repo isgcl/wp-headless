@@ -17,9 +17,15 @@ const CategoryArticlesPageContent = ()=> {
   const [news,setNews] = useState([])
   const [hasMore,setHasMore] = useState(true)
   const [currentPageNo,setCurrentPageNo] = useState(1)
+  
+  const noAuth = {
+    headers : {
+        Authorization : null
+    }
+  }
 
   const getCategoryPosts = async ()=>{
-    await axios.get(process.env.REACT_APP_WP_HEADLESS_URI+'posts/?page='+currentPageNo+'&category_slug='+slug)
+    await axios.get(process.env.REACT_APP_WP_HEADLESS_URI+'posts/?page='+currentPageNo+'&category_slug='+slug,noAuth)
     .then(res => {
         if (res.data.length > 0) {
             setNews((prevdata)=>[...prevdata,...res.data])

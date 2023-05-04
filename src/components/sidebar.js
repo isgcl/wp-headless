@@ -12,6 +12,7 @@ const Sidebar = () => {
     isHamburgerActive,
     setHamburgerActive,
     setNewsPopupOpen,
+    isUserLogedIn,
     darkmode,
     setDarkmode
   } = useContext(WPContext)
@@ -49,6 +50,12 @@ const Sidebar = () => {
             <li>
                 <NavLink onClick={()=>setSomeDisable()} to="/categories">Categories</NavLink>
             </li>
+            {
+              !isUserLogedIn && 
+              <li>
+                <NavLink onClick={()=>setSomeDisable()} to="/register">Register</NavLink>
+            </li>
+            }
         </ul>
     </nav>
     <p className='dark-mode-options'>

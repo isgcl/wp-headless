@@ -11,16 +11,21 @@ import PostsForGrid from './post-for-grid';
 const CategoriesPageContent = ({display,postcount})=> {
   
 
-  // const [loading,setLoading] = useState(true)
+  const [loading,setLoading] = useState(true)
   const [errorLoading,setErrorLoading] = useState(false)
   const [categories,setCategories] = useState([])
   const [hasMore,setHasMore] = useState(true)
   const [currentPageNo,setCurrentPageNo] = useState(1)
 
+  const noAuth = {
+    headers : {
+        Authorization : null
+    }
+  }
 
   
   const getCategories = async ()=>{
-    await axios.get(process.env.REACT_APP_WP_HEADLESS_URI+'categories/?hide_empty=true&page='+currentPageNo)
+    await axios.get(process.env.REACT_APP_WP_HEADLESS_URI+'categories/?hide_empty=true&page='+currentPageNo,noAuth)
     .then(res => {
         if (res.data.length > 0) {
             setCategories((prevdata)=>[...prevdata,...res.data])
@@ -35,6 +40,8 @@ const CategoriesPageContent = ({display,postcount})=> {
       } else {
         setErrorLoading(true)
       }
+    }).finally(res=>{
+        setLoading(false)
     }) 
   }
 
@@ -45,7 +52,10 @@ const CategoriesPageContent = ({display,postcount})=> {
   },[])
 
   return (
-    <section id='categories'>
+    <>
+    {
+        loading ? <Processing message={'Loading...'} /> :
+        <section id='categories'>
         <InfiniteScroll
           dataLength={categories.length}
           next={getCategories}
@@ -66,7 +76,7 @@ const CategoriesPageContent = ({display,postcount})=> {
          { display === 'postin' &&
            categories.map((cat,ind)=> cat.count > 0 &&
            <>
-                <h2><span><em>{parseHtml(cat.name)}</em></span></h2>
+                <h2><span><em>{parseHtml(cat.name)}</em></span> <Link to={`/cat/${cat.slug}`} className='cat-link'> See all {parseHtml(cat.name)} <i className='heady icon-right-big'></i> </Link> </h2>
                 <PostsForGrid key={ind} ind={ind} postcount={postcount} catslug={cat.slug} catname={parseHtml(cat.name)} catimg={cat.acf.cat_img_url} />
            </>
             )
@@ -76,7 +86,10 @@ const CategoriesPageContent = ({display,postcount})=> {
         {
           errorLoading && <Processing message='An error occured. Connection failed. Please refresh' cssclass='error' />
         }
-      </section>
+      </section> 
+    }
+    
+      </>
   )
 }
 

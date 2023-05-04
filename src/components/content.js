@@ -6,6 +6,7 @@ import NewsPageContent from './pages/news'
 import NewsDetailPageContent from './pages/news-detail'
 import PageDetail from './pages/page-detail'
 import Homepage from './pages/home'
+import RegisterPage from './pages/register'
 
 class Content extends Component {
   render() {
@@ -16,7 +17,8 @@ class Content extends Component {
             { page === "page-detail" && <PageDetail /> } 
             { page === "news" && <NewsPageContent /> } 
             { page === "news-detail" &&  <NewsDetailPageContent /> }
-            { page === "category-articles" &&  <CategoryArticlesPageContent /> } 
+            { page === "category-articles" &&  <CategoryArticlesPageContent /> }
+            { page === "register" &&  <RegisterPage /> } 
             { page === "categories" && <CategoriesPageContent display={'thumbnail'} /> } 
             { page === "error" && <ErrorPage /> } 
         </div>

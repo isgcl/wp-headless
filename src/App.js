@@ -37,6 +37,11 @@ const router = createBrowserRouter([
     path: "/categories",
     element: <MainPage page={'categories'} />,
     errorElement: <MainPage page={'error'} />
+  },
+  {
+    path: "/register",
+    element: <MainPage page={'register'} />,
+    errorElement: <MainPage page={'error'} />
   }
 ]);
 

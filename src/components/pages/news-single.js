@@ -42,7 +42,7 @@ const NewsSingle = ({id,date,title,excerpt,excerpt_title,fimg_url,slug,ind,comme
         {parseHtml(excerpt)}
         
         {
-          isMobile ? <button type='button' className='go-news-popup on-mobile' onClick={()=>setPopupCall(true)}> <i className='heady icon-newspaper'></i> Show in Popup</button> : <Link className='stick' to={`/${slug}`}>{title}</Link>
+          isMobile ? <><button type='button' className='go-news-popup on-mobile' onClick={()=>setPopupCall(true)}> <i className='heady icon-newspaper'></i> Show in Popup</button> <Link className='hide-on-mobile' to={`/${slug}`}>{title}</Link> </>: <Link className='stick' to={`/${slug}`}>{title}</Link>
         }
         
         {
