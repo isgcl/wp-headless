@@ -24,6 +24,7 @@ const UserLoginForm = () => {
     const [isProcessing,setIsProcessing] = useState(false)
     const [isConnectionError,setIsConnectionError] = useState(false)
     const [responseErrorMessage,setResponseErrorMessage] = useState(null)
+    const [isPassTextShow,setIsPassTextShow] = useState(false)
     
   
     const formik = useFormik({
@@ -113,7 +114,7 @@ const UserLoginForm = () => {
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  type={isPassTextShow ? 'text': 'password'}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={formik.values.password}
@@ -122,6 +123,11 @@ const UserLoginForm = () => {
                 {
                   formik.errors.password && formik.touched.password && <FormikErrorLabel text={formik.errors.password} />
                 }
+                {
+                      isPassTextShow ? 
+                      <button className='go-pass-visible' type='button' title='Hide password' onClick={()=>setIsPassTextShow(false)}><i className='heady icon-eye-off'></i></button> : 
+                      <button className='go-pass-visible' type='button' title='Show password' onClick={()=>setIsPassTextShow(true)}><i className='heady icon-eye'></i></button>
+                  }
             </p>
           </div>  
           

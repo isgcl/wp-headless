@@ -71,7 +71,7 @@ html, body {
 html, body {
   font: normal 1rem/1.25 'Poppins', system-ui;
 }
-input, textarea, select {
+input, textarea, select, button {
   font: normal 1rem/1.25 'Poppins', system-ui;
 }
 
@@ -690,9 +690,12 @@ aside {
   display: block;
   padding: 8px 16px;
   background-color: #bdbdbd;
-  font-weight: bold;
+  font-weight: 600;
   font-size:1.2rem;
   border-radius: 6px;
+}
+#main-nav ul > li > a.active {
+  font-weight: bold;
 }
 body.dark-mode #main-nav ul > li > a  {
   background-color: var(--dark4);
@@ -1020,13 +1023,15 @@ body.dark-mode .comments {
 }
 
 .comments > .comment + .comment,
-.comments > .comment-reply-form + .comment {
+.comments > .comment-reply-form + .comment,
+.login-needed + .comment {
   margin-top: 40px;
   padding-top: 40px;
   border-top: 1px solid var(--fusya);
 }
 body.dark-mode .comments > .comment + .comment,
-body.dark-mode .comments > .comment-reply-form + .comment  {
+body.dark-mode .comments > .comment-reply-form + .comment,
+body.dark-mode .login-needed + .comment   {
   border-top-color: var(--dark3);
 }
 .comments .comment > .comment {
@@ -1544,7 +1549,7 @@ body.dark-mode .register-box {
 .user-register-form .form-row > p:hover {
   z-index: 2;
 }
-.user-register-form .form-row .go-pass-visible {
+[class*="-form"] .form-row .go-pass-visible  {
   position: absolute;
   z-index: 2;
   inset:0 10px 0 auto;
@@ -1568,6 +1573,51 @@ iframe,
 ,
 .form-row > div > div > div[style] {
   width: 100% !important;
+}
+
+.register-call {
+  padding: 20px;
+  background-color: #f8f8f8;
+  border:1px solid #bdbdbd;
+  border-radius: 10px;
+}
+.register-call > a[href*="/register"] {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 10px 0 0;
+}
+body.dark-mode .register-call {
+  background-color: var(--dark);
+  border-color: var(--dark3);
+}
+
+.plase-login .register-call {
+  margin-left: -36px;
+  border-radius: 0 10px 10px 0;
+  border-left: 0;
+  padding-left: 36px;
+  max-width: max-content;
+}
+
+#post-detail .category-selection.related {
+  margin-top: 3vw;
+}
+
+.post-detail-meta {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  background-color: #ebebeb;
+  justify-content: space-between;
+  border-radius: 0 0 6px 6px;
+}
+body.dark-mode .post-detail-meta {
+  background-color: var(--dark2);
+}
+.post-detail-meta > * {
+  margin: 0;
+  padding: 20px;
 }
 
 /* _last for all screen */
@@ -1688,6 +1738,13 @@ aside:after,
   }
   .share-links > a {
     margin: 2.5px;
+  }
+  .plase-login .register-call {
+    margin-left: unset;
+    max-width: unset;
+    border-radius: 0;
+    border-width: 1px 0 0;
+    padding: 20px;
   }
 }
 @media screen and (orientation:landscape) {
@@ -1918,6 +1975,10 @@ aside:after,
     font-size: 1rem;
   }
 
+  #post-detail .category-selection.related {
+    margin-top: 3vh;
+  }
+  
   @keyframes fromleft {
     0% {transform: translateX(-102vw);opacity: 0;}
     100% {transform: translateX(0);opacity: 1;}

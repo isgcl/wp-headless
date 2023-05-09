@@ -11,6 +11,7 @@ import ShareMe from '../tool/share';
 import WPContext from '../../context/WPContext';
 import moment from 'moment'
 import Comments from './comments';
+import RelatedNews from './related-news';
 
 let fetchUri = process.env.REACT_APP_WP_HEADLESS_URI+'posts/?slug='
 
@@ -33,10 +34,20 @@ const NewsDetail = ()=> {
     .then(res => {
         setNewsDetail(res.data[0])
         setLoading(false)
+        //console.log('newsDetail.categories',newsDetail.categories.join(','))
     })
+    scrollToRoot()
+    setIsCommentsOpen(false)
     // eslint-disable-next-line
   },[slug])
-  
+
+  const scrollToRoot = (offset)=>{
+      document.body.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+      });
+  }
+ 
   
   return (
     
@@ -64,9 +75,11 @@ const NewsDetail = ()=> {
             </div>
             
             <picture className='post-image'><img src={newsDetail.fimg_url} alt={newsDetail.title.rendered} /></picture> 
-            <p className='post-date in-grid'> <i className='heady icon-calendar'></i> <time>{moment(newsDetail.date).format('DD MMMM, YYYY')}</time></p>
-            <p className='post-comments'><button title='Open comments' type='button' onClick={()=> setIsCommentsOpen(true)}><i className='heady icon-comment-empty'></i> Comments ({newsDetail.comment_count}) </button></p>
-
+            <div className='post-detail-meta'>
+              <p className='post-date in-grid'> <i className='heady icon-calendar'></i> <time>{moment(newsDetail.date).format('DD MMMM, YYYY')}</time></p>
+              <p className='post-comments'><button title='Open comments' type='button' onClick={()=> setIsCommentsOpen(true)}><i className='heady icon-comment-empty'></i> Comments ({newsDetail.comment_count}) </button></p>
+            </div>
+          
             { // news detail text parser
               parseHtml(newsDetail.content.rendered)
             }
@@ -75,6 +88,7 @@ const NewsDetail = ()=> {
             }
 
             <ShareMe isSharePopupActive={isSharePopupActive} setSharePopupActive={setSharePopupActive} title={parseHtml(newsDetail.title.rendered)} url={window.location.href} />
+            <RelatedNews cats={newsDetail.categories.join(',')} exclude={newsDetail.id} />
             </>
         }
         

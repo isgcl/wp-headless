@@ -10,7 +10,6 @@ import PostsForGrid from './post-for-grid';
 
 const CategoriesPageContent = ({display, postcount})=> {
   
-
   const [loading,setLoading] = useState(true)
   const [errorLoading,setErrorLoading] = useState(false)
   const [categories,setCategories] = useState([])
@@ -65,20 +64,20 @@ const CategoriesPageContent = ({display, postcount})=> {
               endMessage={ <></> }
             >
             { (display === undefined || display === 'title') &&
-              categories.map((cat,ind)=> cat.count > 0 && <article key={ind}><h2>{parseHtml(cat.name)}</h2> <Link to={`/cat/${cat.slug}`} className='stick'>{parseHtml(cat.name)}</Link></article> )
+              categories.map((cat,ind)=> <article key={ind}><h2>{parseHtml(cat.name)}</h2> <Link to={`/cat/${cat.slug}`} className='stick'>{parseHtml(cat.name)}</Link></article> )
             }
             { display === 'excerpt' &&
-              categories.map((cat,ind)=> cat.count > 0 && <article key={ind}><h2>{parseHtml(cat.name)}</h2> {cat.description ? `${parseHtml(cat.description)}` : null } <Link to={`/cat/${cat.slug}`} className='stick'>{parseHtml(cat.name)}</Link></article> )
+              categories.map((cat,ind)=> <article key={ind}><h2>{parseHtml(cat.name)}</h2> {cat.description ? `${parseHtml(cat.description)}` : null } <Link to={`/cat/${cat.slug}`} className='stick'>{parseHtml(cat.name)}</Link></article> )
             }
             { display === 'thumbnail' &&
-              categories.map((cat,ind)=> cat.count > 0 && <article key={ind} className={ind % 3 === 2 && 'pick'}><h2>{parseHtml(cat.name)}</h2> <picture><img src={cat.acf.cat_img_url} alt={parseHtml(cat.name)} /></picture> {cat.description ? <p>{parseHtml(cat.description)}</p> : null } <Link to={`/cat/${cat.slug}`} className='stick'>{parseHtml(cat.name)}</Link></article> )
+              categories.map((cat,ind)=> <article key={ind} className={ind % 3 === 2 ? 'pick':''}><h2>{parseHtml(cat.name)}</h2> <picture><img src={cat.acf.cat_img_url} alt={parseHtml(cat.name)} /></picture> {cat.description ? <p>{parseHtml(cat.description)}</p> : null } <Link to={`/cat/${cat.slug}`} className='stick'>{parseHtml(cat.name)}</Link></article> )
             }
             { display === 'postin' &&
-              categories.map((cat,ind)=> cat.count > 0 &&
-              <>
-                    <h2><span><em>{parseHtml(cat.name)}</em></span> <Link to={`/cat/${cat.slug}`} className='cat-link'> See all {parseHtml(cat.name)} <i className='heady icon-right-big'></i> </Link> </h2>
+              categories.map((cat,ind)=>
+             <React.Fragment key={ind}>
+                    <h2><span><em>{parseHtml(cat.name)}</em></span> <Link key={ind} to={`/cat/${cat.slug}`} className='cat-link'> See all {parseHtml(cat.name)} <i className='heady icon-right-big'></i> </Link> </h2>
                     <PostsForGrid key={ind} ind={ind} postcount={postcount} catslug={cat.slug} catname={parseHtml(cat.name)} catimg={cat.acf.cat_img_url} />
-              </>
+              </React.Fragment>
                 )
             }
             </InfiniteScroll>

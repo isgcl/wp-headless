@@ -28,11 +28,11 @@ const UserRegisterForm = ()=> {
 
     const recaptchaOnChange = (value) => {
       //console.log("Captcha value:", value);
-      setFieldValue('recaptcha',value)
+      if (value) setFieldValue('recaptcha',value)
     }
 
     const formik = useFormik({
-        initialValues: {
+        initialValues: { 
           username: '',
           email: '',
           password: '',
@@ -46,7 +46,8 @@ const UserRegisterForm = ()=> {
           const registerPayload = {
             username: values.username,
             password: values.password,
-            email: values.email
+            email: values.email,
+            recaptcha : values.recaptcha
           }
         
           axios.post(process.env.REACT_APP_WP_HEADLESS_REGISTER_URI, registerPayload)

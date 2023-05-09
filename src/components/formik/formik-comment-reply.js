@@ -142,7 +142,7 @@ const CommentReplyForm = ({replyid,setShowReplyForm,postid}) => {
           </form> 
           :
           <div className='login-needed'>
-            <p>Please login for write a comment.</p>
+            <p><i className='heady icon-info-circled'></i> <strong>Please login for write a comment.</strong></p>
             <p><button type='button' className='go-login-popup' onClick={()=>replyOnLogedOut()}>Log In</button></p>
           </div>
         } 

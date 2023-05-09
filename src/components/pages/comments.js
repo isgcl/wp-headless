@@ -51,7 +51,6 @@ const Comments = ({id,count,inpopup})=> {
             setIsLoading(false)
         } 
         if (res.data.length < 10) {
-          console.log('Log- Finito')
            setIsFinished(true)
         }
         
@@ -76,7 +75,7 @@ const Comments = ({id,count,inpopup})=> {
         { isLoading ? <Processing message='Comments loading please wait...' /> :
              <div className='comments' id='comments'>
                 {
-                  count > 0 && <button type='button' className='go-write-comment' onClick={()=> setShowReplyForm(!showReplyForm)}> <i class="heady icon-feather"></i> { showReplyForm ? 'Cancel' : 'Reply' } </button>
+                  count > 0 && <button type='button' className='go-write-comment' onClick={()=> setShowReplyForm(!showReplyForm)}> <i className="heady icon-feather"></i> { showReplyForm ? 'Cancel' : 'Reply' } </button>
                 }
                 <i id='comment-place-holder'></i> 
                 <h2> <i className='heady icon-comment-empty'></i> {count} {count <= 1 ? 'Comment' : 'Comments'} </h2>

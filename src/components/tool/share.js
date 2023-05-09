@@ -38,7 +38,7 @@ const ShareMe = ({url,title,type})=> {
                     }
                     <a href={'mailto:?subject='+title+'&body=You must see this: '+title+' '+url}><i className='heady icon-envelope-open-o'></i></a>
                     <CopyToClipboard text={title+' '+url} onCopy={() => setCopied(true)}>
-                        <i class="heady icon-link" title='Copy to clipboard'>Copy</i>
+                        <i className="heady icon-link" title='Copy to clipboard'>Copy</i>
                     </CopyToClipboard>
                     {copied && <span className='copied' onClick={()=>setCopied(false)}>Copied</span>}
                 </p>

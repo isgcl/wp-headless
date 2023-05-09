@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import UserLoginForm from '../formik/user-login-form'
 import UserForgotPasswordForm from '../formik/user-forgot-pass-form'
+import { Link } from 'react-router-dom'
 import WPContext from '../../context/WPContext'
 
 const UserLoginBox = ({className,inpopup})=> {
@@ -46,13 +47,21 @@ const UserLoginBox = ({className,inpopup})=> {
                         <div className='left'>
                             <p><strong>Please enter username and password</strong></p>
                             {
-                                !isMobile && <p><button type='button' onClick={()=> setIsForgotFormVisible(true)}><i className='heady icon-lifebuoy'></i> Forgot your password?</button></p>
+                                !isMobile && 
+                                <>
+                                <p><button type='button' onClick={()=> setIsForgotFormVisible(true)}><i className='heady icon-lifebuoy'></i> Forgot your password?</button></p>
+                                <p className='register-call'> Do you wanna join us?  <Link to='/register' onClick={()=>setIsLoginBoxShow(false)}><i className='heady icon-bicycle'></i> Register Now</Link></p>
+                                </>
                             }
                         </div>
                         <div className='right'>
                             <UserLoginForm />
                             {
-                                isMobile && <p><button type='button' onClick={()=> setIsForgotFormVisible(true)}><i className='heady icon-lifebuoy'></i> Forgot your password?</button></p>
+                                isMobile && 
+                                <>
+                                <p><button type='button' onClick={()=> setIsForgotFormVisible(true)}><i className='heady icon-lifebuoy'></i> Forgot your password?</button></p>
+                                <p className='register-call'> Do you wanna join us?  <Link to='/register' onClick={()=>setIsLoginBoxShow(false)}><i className='heady icon-bicycle'></i> Register Now</Link></p>
+                                </>
                             }
                         </div>
                     </div>

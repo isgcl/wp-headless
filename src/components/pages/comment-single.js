@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import moment from 'moment'
 import parseHtml from 'html-react-parser'
 import CommentReplyForm from '../formik/formik-comment-reply'
+import WPContext from '../../context/WPContext'
 
 
 const CommentSingle = ({comments,className,id,date,author,comment,avatar_uri,postid})=> {
 
   const [showReplyForm,setShowReplyForm] = useState(false)
   const [subCommentsID,setSubCommentsID] = useState([])
+  const {isUserLogedIn} = useContext(WPContext)
   
 
   useEffect(()=>{
@@ -40,8 +42,10 @@ const CommentSingle = ({comments,className,id,date,author,comment,avatar_uri,pos
             { 
             showReplyForm &&
             <div className='reply-form'>
-                <h3>You replying to: {author}'s #{id} comment </h3>
-                <CommentReplyForm replyid={id} postid={postid} setShowReplyForm={setShowReplyForm} />
+              {
+                isUserLogedIn ? <h3>You are replying to: {author}'s comment </h3> : <h3>Oopps!</h3>
+              }
+              <CommentReplyForm replyid={id} postid={postid} setShowReplyForm={setShowReplyForm} />
             </div>
             }
 

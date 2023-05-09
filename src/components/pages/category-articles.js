@@ -33,8 +33,6 @@ const CategoryArticlesPageContent = ()=> {
         } else {
             setHasMore(false)
         }
-        
-        // console.log('CurrentPageNo',currentPageNo)
     }).catch(error => {
       console.error(error)
       if (error.code === 'ERR_BAD_REQUEST') {

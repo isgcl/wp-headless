@@ -59,7 +59,7 @@ const Sidebar = () => {
         </ul>
     </nav>
     <p className='dark-mode-options'>
-      <input onChange={changeDarkMode} type='checkbox' id='darkmode' name='darkmode' checked={darkmode ? 'checked': null } /> <label htmlFor='darkmode'>{ darkmode ? 'Dark Mode' : 'Dark Mode'}</label>
+      <input type='checkbox' onChange={changeDarkMode} value={undefined} id='darkmode' name='darkmode' checked={darkmode ? 'checked': false } /> <label htmlFor='darkmode'>{ darkmode ? 'Dark Mode' : 'Dark Mode'}</label>
     </p>
     <p className='rocket'>
       <i className='heady icon-sipa'></i>
