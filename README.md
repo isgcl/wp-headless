@@ -14,6 +14,9 @@
     <li> Post list, infinite scroll, post detail and comment, post popup view </li>
     <li> Dark & Ligt Mode Options</li>
     <li> User Registiration & Login Implementation </li>
+    <li> Reset Password Implementation </li>
     <li> Page structure </li>
     <li> SEO & SMO Optimization</li>
 </ul>
+
+<p>If you want to have a Headless CMS original theme, please write to us. <a href="mailto:bir@sipa.web.tr">bir@sipa.web.tr</a></p>
