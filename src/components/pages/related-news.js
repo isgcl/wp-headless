@@ -45,7 +45,7 @@ const RelatedNews = ({cats,exclude}) => {
             <div className='category-selection related'>
                 <h2><span><em>May be you interest</em></span></h2>
             <section id="related-posts" className="grid-article grid-news grid-catposts related">
-            {news.map((item,ind)=> <NewsSingle key={item.id} ind={ind} id={item.id} title={item.title.rendered} slug={item.slug} excerpt={item.excerpt.rendered} excerpt_title={item.excerpt_title} fimg_url={item.fimg_url} comment_count={item.comment_count} date={item.date} /> )}
+            {news.map((item,ind)=> <NewsSingle key={item.id} ind={ind} id={item.id} title={item.title.rendered} slug={item.slug} excerpt={item.excerpt.rendered} excerpt_title={item.excerpt_title} fimg_url={item.fimg_url} comment_count={item.comment_count} date={item.date} quickviewmode={false} /> )}
             </section>
             </div>
         }

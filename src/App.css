@@ -1308,6 +1308,12 @@ body.dark-mode .user-menu {
   object-position: center;
 }
 
+.user-menu .closeme {
+  position: absolute;
+  z-index: 2;
+  inset:10px 10px auto auto;
+}
+
 .go-user-menu i.heady {
   font-size: 2.1rem;
   display: inline-block;

@@ -13,10 +13,11 @@ import LazyLoad from 'react-lazyload';
 
 
 
-const NewsSingle = ({id,date,title,excerpt,excerpt_title,fimg_url,slug,ind,comment_count}) => {
+const NewsSingle = ({id,date,title,excerpt,excerpt_title,fimg_url,slug,ind,comment_count,quickviewmode}) => {
+
+  if (quickviewmode === undefined) quickviewmode = true
 
   const {isMobile} = useContext(WPContext)
-
   const [isPopupCall,setPopupCall] = useState(false) 
 
   return (
@@ -29,7 +30,7 @@ const NewsSingle = ({id,date,title,excerpt,excerpt_title,fimg_url,slug,ind,comme
             </LazyLoad>
         </picture>
         {
-          !isMobile && <button title='Quick View' type='button' className='go-news-popup on-desktop' onClick={()=>setPopupCall(true)}> <i className='heady icon-eye'></i> Show in Popup</button>
+          !isMobile && quickviewmode && <button title='Quick View' type='button' className='go-news-popup on-desktop' onClick={()=>setPopupCall(true)}> <i className='heady icon-eye'></i> Show in Popup</button>
         }
         <p className='post-meta'>
           <span className='post-date in-grid'> <i className='heady icon-calendar'></i> <time>{moment(date).format('DD MMMM YYYY, HH:MM')}</time></span>
@@ -42,7 +43,7 @@ const NewsSingle = ({id,date,title,excerpt,excerpt_title,fimg_url,slug,ind,comme
         {parseHtml(excerpt)}
         
         {
-          isMobile ? <><button type='button' className='go-news-popup on-mobile' onClick={()=>setPopupCall(true)}> <i className='heady icon-newspaper'></i> Show in Popup</button> <Link className='hide-on-mobile' to={`/${slug}`}>{title}</Link> </>: <Link className='stick' to={`/${slug}`}>{title}</Link>
+          ( isMobile && quickviewmode ) ? <><button type='button' className='go-news-popup on-mobile' onClick={()=>setPopupCall(true)}> <i className='heady icon-newspaper'></i> Show in Popup</button> <Link className='hide-on-mobile' to={`/${slug}`}>{title}</Link> </>: <Link className='stick' to={`/${slug}`}>{title}</Link>
         }
         
         {

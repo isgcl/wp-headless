@@ -75,19 +75,13 @@ const UserLogedMenu = ()=> {
         {
             isUserDataReady && logedUserExtentedData !== undefined && <p className='user-avatar'><img src={logedUserExtentedData.avatar_urls[96]} alt={user_display_name} /></p>
         }
-        
         <p>Hello <strong title={user_email}>{user_display_name}</strong> <small>@{user_nicename}</small></p>
         <p><button type='button' className='go-logout' onClick={()=> setConfirmBoxVisible(true)}><i className='heady icon-logout'></i> Log out</button></p>    
-        {
-          // logedUserExtentedData && <p>{JSON.stringify(logedUserExtentedData.avatar_urls)}</p> 
-          
-        }
-        
         {
             isConfirmBoxVisible &&
             <Confirmbox title={'Are you sure?'} message={'Please confirm to logout.'} icon={'user-blink'} cancelFn={setConfirmBoxVisible} confirmFn={logOut} cancelButtonText={'Cancel'} confirmButtonText={'Confirm'} />
         }
-        
+        <button title='Close' className='closeme' type='button' onClick={()=>setUserMenuVisible(false)}><i className='heady icon-cancel'></i></button>
     </div>
     </>
   )
