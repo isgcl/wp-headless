@@ -74,7 +74,7 @@ const UserLoginForm = () => {
               setIsConnectionError(true)
             })
         },
-        validationSchema: userLoginValidations // yup componenti ile hata algoritması için şema oluşturuyoruz
+        validationSchema: userLoginValidations
       });
 
       const {handleSubmit,handleChange,handleBlur} = formik
@@ -101,7 +101,7 @@ const UserLoginForm = () => {
                     name="username"
                     type="text"
                     onChange={handleChange}
-                    onBlur={handleBlur} // tüm hataları aynı anda göstermesin diye onblur ekleniyor. touched kısmı da olmalı, hemen aşağıda.
+                    onBlur={handleBlur} 
                     value={formik.values.username}
                     placeholder='Username or email'
                   />
@@ -133,7 +133,6 @@ const UserLoginForm = () => {
           
           <p className='t_right'><button type="submit" className='go-login'>Log in</button></p>
           <p><button type='button' className='go-test-user-login' onClick={()=>autoLoginTestUser()}><i className='heady icon-child'></i> Auto login for Test user.</button></p>
-            {/*JSON.stringify(formik.values)*/}
         
         </form>
         </>

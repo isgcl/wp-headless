@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Processing from '../processing'
 import axios from 'axios'
 import InfiniteScroll from 'react-infinite-scroll-component';
-// import EndOfData from '../infotext/end-of-data';
 import { Link } from 'react-router-dom'
 import parseHtml from 'html-react-parser';
 import PostsForGrid from './post-for-grid';

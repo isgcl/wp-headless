@@ -43,23 +43,15 @@ const CommentReplyForm = ({replyid,setShowReplyForm,postid}) => {
 
           axios.post(fetchUri,commentData)
           .then(res => {
-              //setComments( (prev)=> [...prev,res.data] )
               createNotify({message:'Your comment has been sent succesfully. It will be publish when it aproved',type:'temporary',cssclass:'green'})
-              // console.log('Res data',res.data)
           }).catch(err => {
-              //console.log('errol',err)
-              //console.log('errol',err.response.data.message)
               createNotify({message:'An error occured. Please try again. Server response message: '+err.response.data.message,type:'temporary',cssclass:'red'})
           }).finally(()=>{
              setIsProcessing(false)
              setShowReplyForm(false)
           })
-          
-          // console.log('Reply sent to server...',replyid)
-          
-          console.log(values)
         },
-        validationSchema: replyValidations // yup componenti ile hata algoritması için şema oluşturuyoruz
+        validationSchema: replyValidations 
       });
 
     const replyOnLogedOut = ()=> {
@@ -89,7 +81,7 @@ const CommentReplyForm = ({replyid,setShowReplyForm,postid}) => {
                         name="firstName"
                         type="text"
                         onChange={formik.handleChange}
-                        onBlur={formik.handleBlur} // tüm hataları aynı anda göstermesin diye onblur ekleniyor. touched kısmı da olmalı, hemen aşağıda.
+                        onBlur={formik.handleBlur} 
                         value={formik.values.firstName}
                         placeholder='Name Surname'
                       />
@@ -136,9 +128,6 @@ const CommentReplyForm = ({replyid,setShowReplyForm,postid}) => {
               </p>
             </div>
             <p className='t_right'><button type="submit" className='go-submit'>Submit</button></p>
-            
-              {/*JSON.stringify(formik.values)*/}
-          
           </form> 
           :
           <div className='login-needed'>

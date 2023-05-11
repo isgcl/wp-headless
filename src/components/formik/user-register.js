@@ -27,7 +27,6 @@ const UserRegisterForm = ()=> {
     const [isPassTextShow,setIsPassTextShow] = useState(false)
 
     const recaptchaOnChange = (value) => {
-      //console.log("Captcha value:", value);
       if (value) setFieldValue('recaptcha',value)
     }
 

@@ -34,7 +34,6 @@ const NewsDetail = ()=> {
     .then(res => {
         setNewsDetail(res.data[0])
         setLoading(false)
-        //console.log('newsDetail.categories',newsDetail.categories.join(','))
     })
     scrollToRoot()
     setIsCommentsOpen(false)
