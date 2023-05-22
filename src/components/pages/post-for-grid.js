@@ -10,8 +10,14 @@ const PostsForGrid = ({catslug,postcount,catname,catimg,ind})=> {
   const [posts,setPosts] = useState([])
   const [errorLoading,setErrorLoading] = useState(false)
 
+  const noAuth = {
+    headers : {
+        Authorization : null
+    }
+  }
+
   const getCategoryPosts = async ()=>{
-    await axios.get(process.env.REACT_APP_WP_HEADLESS_URI+'posts/?per_page='+postcount+'&category_slug='+catslug)
+    await axios.get(process.env.REACT_APP_WP_HEADLESS_URI+'posts/?per_page='+postcount+'&category_slug='+catslug,noAuth)
     .then(res => {
         setPosts((prevdata)=>[...prevdata,...res.data])
         setIsLoading(false)

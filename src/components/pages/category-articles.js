@@ -34,7 +34,7 @@ const CategoryArticlesPageContent = ()=> {
             setHasMore(false)
         }
     }).catch(error => {
-      console.error(error)
+      // console.error('Nerdeyiz',error)
       if (error.code === 'ERR_BAD_REQUEST') {
         setHasMore(false)
       } else {

@@ -55,6 +55,7 @@ const UserLogedMenu = ()=> {
         // console.log(res.data)
     }).catch(err => {
         console.error(err)
+        if (err.response.data.code === 'jwt_auth_invalid_token') logOut()
     })
   }
 
